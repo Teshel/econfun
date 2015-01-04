@@ -36,12 +36,21 @@ NGram.createModel = function(n, corpus) {
 				for (var i=0; i<word.length-n; i++) {
 					var given = word.substring(i,(i+n)-1);
 					//debugger;
-					var letter = word[i+n];
-					dist[given] = model[given] || {};
-					dist[given][letter] = model[given][letter]+1||1;
+					var letter = word[(i+n)-1];
+					dist[given] = dist[given] || {};
+					dist[given][letter] = dist[given][letter]+1||1;
 				}
 			}
 		});
+
+		for (var givenKey in dist) {
+			var offset = 0;
+			distOffsets[givenKey] = [];
+			for (letterKey in dist[givenKey]) {
+				offset += dist[givenKey][letterKey];
+				distOffsets[givenKey].push([letterKey, offset]);
+			}
+		}
 	}
 	// might only need to return the offsets, not sure yet
 	return {dist:dist, distOffsets:distOffsets, seeds:seeds, seedOffsets:seedOffsets};
@@ -71,7 +80,7 @@ NGram.App.prototype = {
 	seedSequence: function(n) {
 		n = n || 2;
 
-		
+
 	},
 	// n refers to the n in n-gram
 	// minLength and maxLength are the minimum and maximum lengths
