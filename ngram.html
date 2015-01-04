@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<title>EconFun: N-Gram Model for random name generation</title>
+	<script type="text/javascript" src="json2.js"></script>
+</head>
+<body>
+	<div style="width: 100%; overflow: hidden;">
+    	<div style="width: 450px; float: left;">
+    		<textarea rows="20" cols="40" id="corpus_textarea"></textarea>
+    	</div>
+    	<div style="padding: 5px; min-height: 300px; margin-left: 470px; border: 1px solid gray;" id="info_panel">
+    		<select id="model_size">
+    			<option value="2">2</option>
+    			<option value="2">3</option>
+    			<option value="2">4</option>
+    			<option value="2">5</option>
+    		</select>
+    		gram model&nbsp;
+    		<input type="button" id="create_model_button" value="Create Model" />
+    		<div id="output_div"></div>
+    	</div>
+	</div>
+	<!--<script type="text/javascript" src="ngram.js"></script>-->
+</body>
+</html>
